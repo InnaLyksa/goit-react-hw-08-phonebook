@@ -11,7 +11,7 @@ const HomePage = () => {
         textAlign: 'center',
       }}
     >
-      <p> This is a cool utility to create your:</p>
+      <p> Сreate your:</p>
       <PageHeader>Phonebook</PageHeader>
     </Container>
   );

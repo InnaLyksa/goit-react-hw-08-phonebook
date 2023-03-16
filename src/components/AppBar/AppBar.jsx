@@ -12,8 +12,8 @@ import { selectIsLoggedIn } from 'redux/auth/selectors';
 import UserNav from './UserNav/UserNav';
 import Navigation from './Navigation/Navigation';
 import HouseIcon from '@mui/icons-material/House';
-import LightModeIcon from '@mui/icons-material/LightMode';
-import DarkModeIcon from '@mui/icons-material/DarkMode';
+// import LightModeIcon from '@mui/icons-material/LightMode';
+// import DarkModeIcon from '@mui/icons-material/DarkMode';
 import { Loader } from 'components/Loader/Loader';
 
 export default function ContactsAppBar({ theme, changeTheme }) {
@@ -49,7 +49,7 @@ export default function ContactsAppBar({ theme, changeTheme }) {
               </Typography>
             )}
           </div>
-          <IconButton
+          {/* <IconButton
             size="large"
             edge="end"
             color="inherit"
@@ -59,7 +59,7 @@ export default function ContactsAppBar({ theme, changeTheme }) {
             }}
           >
             {theme === 'light' ? <LightModeIcon /> : <DarkModeIcon />}
-          </IconButton>
+          </IconButton> */}
         </Toolbar>
       </AppBar>
 

@@ -1,20 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
-// import Link from '@mui/material/Link';
-// import { styled } from '@mui/material/styles';
-
-// export const LinkStyled = styled(Link)`
-//   /* color: 'main'; */
-//   //   /* font-size: */
-//   text-decoration: none;
-//   &:hover,
-//   &:active {
-//     color: white;
-//     text-decoration: underline;
-//   }
-// `;
-
 export const Nav = styled.nav`
   display: flex;
   gap: 8px;
