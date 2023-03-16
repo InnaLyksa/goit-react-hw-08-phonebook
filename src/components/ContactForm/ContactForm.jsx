@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from 'redux/operations';
-import { selectContacts } from 'redux/selectors';
+import { addContact } from 'redux/contacts/contactOperations';
+import { selectContacts } from 'redux/contacts/contactsSelectors';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import { nanoid } from 'nanoid';
-import { Notification } from '../utils/notifications';
+import { Notification } from '../../components/utils/notification';
 import {
   FormAddContact,
   LabelContactForm,
@@ -16,7 +16,7 @@ import {
 const nameInputId = nanoid();
 const numberInputId = nanoid();
 
-const phoneRegEx =
+const numberRegEx =
   /^\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/;
 const nameRegEx = /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/;
 
@@ -29,9 +29,9 @@ const schema = yup.object().shape({
       excludeEmptyString: false,
     })
     .required('Name is required field!'),
-  phone: yup
+  number: yup
     .string()
-    .matches(phoneRegEx, {
+    .matches(numberRegEx, {
       message:
         'Phone number must be digits and can contain spaces, dashes, parentheses and can start with +',
       excludeEmptyString: false,
@@ -41,7 +41,7 @@ const schema = yup.object().shape({
 
 const initialValues = {
   name: '',
-  phone: '',
+  number: '',
 };
 
 export const ContactForm = () => {
@@ -53,19 +53,27 @@ export const ContactForm = () => {
       ({ name }) => name.toLowerCase() === values.name.toLowerCase()
     );
     const isDublicateNumber = contacts.find(
-      ({ phone }) => phone === values.phone
+      ({ number }) => number === values.number
     );
     if (isDublicateName) {
       return Notification(values.name);
     } else {
       if (isDublicateNumber) {
-        return Notification(values.phone);
+        return Notification(values.number);
       }
     }
     console.log(values);
-    dispatch(addContact(values));
-    resetForm();
+    try {
+      dispatch(addContact(values));
+      // toast.success('Contact added');
+      resetForm();
+    } catch (error) {
+      console.log(`${error.message}`);
+    }
   };
+  // dispatch(addContact(values));
+  // resetForm();
+
   return (
     <Formik
       initialValues={initialValues}
@@ -78,8 +86,8 @@ export const ContactForm = () => {
         <MessageError name="name" component="div" />
 
         <LabelContactForm htmlFor={numberInputId}>Number:</LabelContactForm>
-        <InputContactForm id={numberInputId} type="tel" name="phone" />
-        <MessageError name="phone" component="div" />
+        <InputContactForm id={numberInputId} type="tel" name="number" />
+        <MessageError name="number" component="div" />
 
         <ButtonSubmit type="submit">Add contact</ButtonSubmit>
       </FormAddContact>

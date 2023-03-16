@@ -13,3 +13,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+Button {
+  background-color: #65ea65;
+  color: black;
+}
+.MuiButtonBase-root-MuiButton-root:hover {
+  background-color: #65ea65;
+  color: white;
+}

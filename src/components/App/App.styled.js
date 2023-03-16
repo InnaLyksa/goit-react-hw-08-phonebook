@@ -13,7 +13,6 @@ export const PageHeader = styled.h1`
   &::before {
     content: '📗';
     margin-right: 10px;
-    /* vertical-align: 0.5rem; */
     font-size: 48px;
   }
 `;

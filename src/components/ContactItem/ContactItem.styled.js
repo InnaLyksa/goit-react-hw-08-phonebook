@@ -4,7 +4,7 @@ export const ContactListItem = styled.li`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 400px;
+  /* width: 400px; */
 
   &:not(:last-child) {
     margin-bottom: 8px;
@@ -38,6 +38,7 @@ export const ContactText = styled.a`
 `;
 export const DeleteBtn = styled.button`
   padding: 8px 10px;
+  margin-left: 4px;
   font-size: 16px;
   font-weight: bold;
   background: #f7a9a3;
