@@ -5,8 +5,8 @@ const HomePage = () => {
     <Container
       maxWidth="md"
       sx={{
-        bgcolor: 'background.main',
-        color: 'text.primary',
+        // bgcolor: 'background.default',
+        // color: 'text.primary',
         paddingTop: 4,
         textAlign: 'center',
       }}
