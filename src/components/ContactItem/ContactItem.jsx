@@ -8,7 +8,7 @@ import { ContactListItem, ContactText } from './ContactItem.styled';
 
 export const ContactItem = ({ id, name, number }) => {
   const dispatch = useDispatch();
-  const handleDeleteCintact = () => {
+  const handleDeleteContact = () => {
     dispatch(deleteContact(id));
     Success(name, 'is deleted from ');
   };
@@ -19,13 +19,9 @@ export const ContactItem = ({ id, name, number }) => {
         <Phone />
         {name}: {number}
       </ContactText>
-
-      {/* <DeleteBtn type={'button'} onClick={() => dispatch(deleteContact(id))}>
-        Delete
-      </DeleteBtn> */}
       <Button
         variant="contained"
-        onClick={handleDeleteCintact}
+        onClick={handleDeleteContact}
         sx={{
           ml: 2,
           bgcolor: 'background.button',

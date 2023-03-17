@@ -8,8 +8,6 @@ export default function NotFoundPage() {
     <Box
       sx={{
         width: '100%',
-        bgcolor: 'background.paper',
-        color: 'text.primary',
         p: 3,
       }}
     >

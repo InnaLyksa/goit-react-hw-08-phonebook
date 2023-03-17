@@ -5,13 +5,13 @@ const HomePage = () => {
     <Container
       maxWidth="md"
       sx={{
-        // bgcolor: 'background.default',
+        bgcolor: 'background.divider',
         // color: 'text.primary',
-        paddingTop: 4,
+        paddingTop: 10,
         textAlign: 'center',
       }}
     >
-      <p> Сreate your:</p>
+      {/* <p> Register to create your:</p> */}
       <PageHeader>Phonebook</PageHeader>
     </Container>
   );

@@ -98,7 +98,6 @@ export default function RegisterPage() {
               label="Password"
               type="password"
               id="logPassword"
-              autoComplete="current-password"
               helperText=" Password must be at least 7 characters"
             />
 
@@ -106,7 +105,7 @@ export default function RegisterPage() {
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2, bgcolor: '#4caf50', color: 'text.primary' }}
+              sx={{ mt: 3, mb: 2, bgcolor: '#81c784', color: 'text.primary' }}
             >
               Sign up
             </Button>

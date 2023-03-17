@@ -1,11 +1,10 @@
-// import { useState, useEffect, lazy, Suspense, useMemo } from 'react';
-import { useEffect, lazy, Suspense } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-// import { ThemeProvider, createTheme } from '@mui/material/styles';
-// import { getDesignTokens } from '../../style/theme';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { light, dark } from '../../style/theme';
 
 import PublicRoute from '../Routes/PublicRoute';
 import PrivateRoute from '../Routes/PrivateRoute';
@@ -30,68 +29,66 @@ export const App = () => {
     dispatch(authOperations.refreshUser());
   }, [dispatch]);
 
-  // const [mode, setMode] = useState(
-  //   JSON.parse(window.localStorage.getItem('theme'))
-  // );
+  const [isDarkTheme, setIsDarkTheme] = useState(
+    JSON.parse(window.localStorage.getItem('darkTheme')) ?? false
+  );
 
-  // const theme = useMemo(() => createTheme(getDesignTokens(mode)), [mode]);
+  useEffect(() => {
+    window.localStorage.setItem('darkTheme', JSON.stringify(isDarkTheme));
+  }, [isDarkTheme]);
 
-  // const toggleColorMode = () => {
-  //   setMode(prevMode => (prevMode === 'light' ? 'dark' : 'light'));
-  // };
-  // useEffect(() => {
-  //   window.localStorage.setItem('theme', JSON.stringify(mode));
-  // }, [mode]);
-  // console.log(theme.palette.mode);
+  const handleChangeTheme = () => {
+    setIsDarkTheme(!isDarkTheme);
+  };
+
   return (
-    // <ThemeProvider theme={theme}>
-    <Suspense fallback={<Loader />}>
-      {!isFetchingUser && (
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <ContactsAppBar
-              // theme={theme.palette.mode}
-              // changeTheme={toggleColorMode}
+    <ThemeProvider theme={isDarkTheme ? createTheme(dark) : createTheme(light)}>
+      <Suspense fallback={<Loader />}>
+        {!isFetchingUser && (
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <ContactsAppBar
+                  isDark={isDarkTheme}
+                  changeTheme={handleChangeTheme}
+                />
+              }
+            >
+              <Route index element={<HomePage />} />
+              <Route
+                path="contacts"
+                element={
+                  <PrivateRoute
+                    component={ContactsPage}
+                    redirectTo="/login"
+                  ></PrivateRoute>
+                }
               />
-            }
-          >
-            <Route index element={<HomePage />} />
-            <Route
-              path="contacts"
-              element={
-                <PrivateRoute
-                  component={ContactsPage}
-                  redirectTo="/login"
-                ></PrivateRoute>
-              }
-            />
-            <Route
-              path="login"
-              element={
-                <PublicRoute
-                  component={LoginPage}
-                  redirectTo="/contacts"
-                ></PublicRoute>
-              }
-            />
-            <Route
-              path="register"
-              element={
-                <PublicRoute
-                  component={RegisterPage}
-                  redirectTo="/contacts"
-                ></PublicRoute>
-              }
-            />
-          </Route>
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-      )}
-      <ToastContainer />
-    </Suspense>
-
-    /* </ThemeProvider> */
+              <Route
+                path="login"
+                element={
+                  <PublicRoute
+                    component={LoginPage}
+                    redirectTo="/contacts"
+                  ></PublicRoute>
+                }
+              />
+              <Route
+                path="register"
+                element={
+                  <PublicRoute
+                    component={RegisterPage}
+                    redirectTo="/contacts"
+                  ></PublicRoute>
+                }
+              />
+            </Route>
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        )}
+        <ToastContainer />
+      </Suspense>
+    </ThemeProvider>
   );
 };

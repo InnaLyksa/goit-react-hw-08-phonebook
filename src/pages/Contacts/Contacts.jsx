@@ -19,7 +19,7 @@ function Contacts() {
   return (
     <Wrapper>
       <Filter />
-      <Stack direction="row" sx={{ marginBottom: 2, gap: 2 }}>
+      <Stack direction="row" sx={{ marginBottom: 2, gap: 4 }}>
         <Typography variant="h4">Contacts</Typography>
 
         <Button
@@ -27,8 +27,7 @@ function Contacts() {
           endIcon={<AddCircleOutlineIcon />}
           onClick={toggleAddingModal}
           sx={{
-            ml: 2,
-            bgcolor: '#4caf50',
+            bgcolor: 'btnGreen',
             color: 'text.primary',
           }}
         >
