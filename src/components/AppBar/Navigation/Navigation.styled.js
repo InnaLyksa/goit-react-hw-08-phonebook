@@ -11,8 +11,6 @@ export const Nav = styled.nav`
 `;
 
 export const StyledLink = styled(NavLink)`
-  /* color: inherit;
-  color: black; */
   font-size: 24px;
   text-decoration: none;
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);

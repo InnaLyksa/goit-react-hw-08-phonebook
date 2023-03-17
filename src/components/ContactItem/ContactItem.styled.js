@@ -11,16 +11,6 @@ export const ContactListItem = styled.li`
   }
 `;
 
-// export const ContactText = styled.span`
-//   font-size: 24px;
-
-//   &::before {
-//     content: '✔️';
-//     margin-right: 5px;
-//     font-size: 24px;
-//   }
-// `;
-
 export const ContactText = styled.a`
   font-size: 20px;
   text-decoration: none;

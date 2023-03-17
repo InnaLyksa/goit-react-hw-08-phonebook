@@ -1,9 +1,11 @@
 import React from 'react';
 import { useState } from 'react';
+
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+
 import { Wrapper } from './Contacts.styled';
 import AddContactModal from '../../components/ModalAddContact/ModalAddContact';
 
@@ -20,7 +22,14 @@ function Contacts() {
     <Wrapper>
       <Filter />
       <Stack direction="row" sx={{ marginBottom: 2, gap: 4 }}>
-        <Typography variant="h4">Contacts</Typography>
+        <Typography
+          variant="h4"
+          sx={{
+            color: 'text.primary',
+          }}
+        >
+          Contacts
+        </Typography>
 
         <Button
           variant="contained"
@@ -34,6 +43,7 @@ function Contacts() {
           Add new contact
         </Button>
       </Stack>
+
       <ContactList />
       {showAddingModal && <AddContactModal onClose={toggleAddingModal} />}
     </Wrapper>

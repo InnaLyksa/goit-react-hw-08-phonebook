@@ -1,14 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import {
-  Error,
-  registerSuccess,
-  registerError,
-  loginSuccess,
-  loginError,
-  logoutSuccess,
-  logoutError,
-} from 'components/utils/notification';
+import { Error, authSuccess, authError } from 'components/utils/notification';
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 const token = {
@@ -26,10 +18,10 @@ const addNewUser = createAsyncThunk(
     try {
       const { data } = await axios.post('/users/signup', credentials);
       token.set(data.token);
-      registerSuccess();
+      authSuccess('The registration  was successful');
       return data;
     } catch (error) {
-      registerError();
+      authError('The registration was failed. Try again');
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -41,10 +33,10 @@ const loginUser = createAsyncThunk(
     try {
       const { data } = await axios.post('/users/login', credentials);
       token.set(data.token);
-      loginSuccess();
+      authSuccess('Welcome to the Phonebook');
       return data;
     } catch (error) {
-      loginError();
+      authError('Your loginisation was failed. Try again');
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -54,9 +46,9 @@ const logoutUser = createAsyncThunk('auth/logoutUser', async (_, thunkAPI) => {
   try {
     await axios.post('users/logout');
     token.unset();
-    logoutSuccess();
+    authSuccess('Logout was successful');
   } catch (error) {
-    logoutError();
+    authError('Logout failed. Try again');
     return thunkAPI.rejectWithValue(error.message);
   }
 });

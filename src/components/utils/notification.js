@@ -14,20 +14,10 @@ export function Error() {
 export const Success = (item, text) => {
   toast.success(`${item} ${text} the phonebook`, options);
 };
-export const registerSuccess = () =>
-  toast.success('The registration  was successful', options);
 
-export const registerError = () =>
-  toast.error('The registration was failed. Try again', options);
-
-export const loginSuccess = () =>
-  toast.success('Welcome to the Phonebook', options);
-
-export const loginError = () =>
-  toast.error('Your loginisation was failed. Try again', options);
-
-export const logoutSuccess = () =>
-  toast.success('Logout was successful', options);
-
-export const logoutError = () =>
-  toast.error('Logout failed. Try again', options);
+export const authSuccess = text => {
+  toast.success(`${text}`, options);
+};
+export const authError = text => {
+  toast.error(`${text}`, options);
+};

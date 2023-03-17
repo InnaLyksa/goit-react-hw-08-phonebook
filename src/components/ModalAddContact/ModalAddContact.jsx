@@ -158,7 +158,7 @@ const AddContactModal = ({ onClose }) => {
                   onClick={onClose}
                   sx={{
                     ml: 2,
-                    bgcolor: 'background.button',
+                    bgcolor: 'btnRed',
                     color: 'text.primary',
                   }}
                 >

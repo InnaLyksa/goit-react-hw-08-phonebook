@@ -64,7 +64,7 @@ export default function ContactsAppBar({ isDark, changeTheme }) {
       </AppBar>
 
       <Toolbar />
-      <Container>
+      <Container sx={{ bgcolor: 'background.default' }}>
         <React.Suspense fallback={<Loader />}>
           <Outlet />
         </React.Suspense>

@@ -24,7 +24,7 @@ export const ContactItem = ({ id, name, number }) => {
         onClick={handleDeleteContact}
         sx={{
           ml: 2,
-          bgcolor: 'background.button',
+          bgcolor: 'btnRed',
           color: 'text.primary',
         }}
       >
